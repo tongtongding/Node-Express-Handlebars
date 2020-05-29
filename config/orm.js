@@ -65,7 +65,16 @@ const orm = {
     const result = await connection.query(queryString);
 
     return result;
+  },
+
+  deleteOne: async (table, condition) => {
+    let queryString = `DELETE FROM ${table} WHERE ${condition}`;
+
+    const result = await connection.query(queryString);
+
+    return result;
   }
+
 };
 
 

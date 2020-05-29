@@ -28,5 +28,17 @@ router.put("/api/burgers/:id", async (req, res) => {
   res.status(200).end();
 });
 
+router.delete("/api/burgers/:id", async (req, res) => {
+  let condition = `id = ${req.params.id}`;
+
+  const data = await burger.deleteOne(condition);
+
+  if (data.affectedRows === 0) {
+    res.status(404).end();
+  }
+
+  res.status(200).end();
+});
+
 // Export routes for server.js to use.
 module.exports = router;
